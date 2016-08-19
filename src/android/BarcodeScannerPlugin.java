@@ -27,7 +27,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.honeywell.decodemanager.DecodeManager;
+import com.honeywell.decodemanager.SymbologyConfigs;
 import com.honeywell.decodemanager.barcode.DecodeResult;
+import com.honeywell.decodemanager.barcode.CommonDefine;
+
+// Add symbologies here
+import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCode128;
+import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCodeQRCode;
 
 public class BarcodeScannerPlugin extends CordovaPlugin {
 
