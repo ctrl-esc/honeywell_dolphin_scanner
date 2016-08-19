@@ -2,20 +2,11 @@ package org.limitstate.honeywell;
 
 import android.app.Activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import java.io.IOException;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -38,8 +29,8 @@ import com.honeywell.decodemanager.barcode.DecodeResult;
 import com.honeywell.decodemanager.barcode.CommonDefine;
 
 // Add symbologies here
-import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCode39;
-import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCodeAztec;
+import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCode128;
+import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCodeQRCode;
 
 public class HoneywellDolphinScannerPlugin extends CordovaPlugin {
 
@@ -58,7 +49,7 @@ public class HoneywellDolphinScannerPlugin extends CordovaPlugin {
 		if (action.equals("scan")) {
 			this.pluginCallbackContext = callbackContext;
 
-			if ((decodeManager == null)) {
+			if ((decodeManager == null) && (Build.MODEL.toLowerCase().contains("dolphin 70e".toLowerCase()))) {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
 			}
 			try {
@@ -80,7 +71,6 @@ public class HoneywellDolphinScannerPlugin extends CordovaPlugin {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case DecodeManager.MESSAGE_DECODER_COMPLETE:
-				String strDecodeResult = "";
 				DecodeResult decodeResult = (DecodeResult) msg.obj;
 
 				byte codeid = decodeResult.codeId;
