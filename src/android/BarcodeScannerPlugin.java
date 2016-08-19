@@ -34,7 +34,7 @@ import com.honeywell.decodemanager.barcode.CommonDefine;
 public class BarcodeScannerPlugin extends CordovaPlugin {
 
 	private static final String LOG_TAG = "BarcodeScannerPlugin";
-	private static final int SCANTIMEOUT = 3000;
+	private static final int SCANTIMEOUT = 2000;
 
 	DecodeManager decodeManager = null;
 	BroadcastReceiver scannerReceiver = null;
