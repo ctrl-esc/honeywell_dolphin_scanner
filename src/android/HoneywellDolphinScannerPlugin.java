@@ -52,6 +52,7 @@ public class HoneywellDolphinScannerPlugin extends CordovaPlugin {
 			if ((decodeManager == null) && (Build.MODEL.toLowerCase().contains("dolphin 70e".toLowerCase()))) {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
 			}
+			else sendUpdate('Scan not started', false);
 			try {
 				this.doScan();
 				return true;
