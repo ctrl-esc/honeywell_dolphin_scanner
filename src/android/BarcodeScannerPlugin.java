@@ -87,6 +87,23 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 			case DecodeManager.MESSAGE_DECODER_FAIL: 
 				break;
 			case DecodeManager.MESSAGE_DECODER_READY: 
+				try {
+					//mDecodeManager.disableSymbology(CommonDefine.SymbologyID.SYM_ALL);
+					SymbologyConfigCodeQRCode codeQR = new SymbologyConfigCodeQRCode();
+					codeQR.enableCheckEnable(false);
+					codeQR.enableSymbology(true);
+					//code39.setMaxLength(48);
+					//code39.setMinLength(2);
+					
+					SymbologyConfigs symconfig = new SymbologyConfigs();
+
+					symconfig.addSymbologyConfig(codeQR);
+					decodeManager.setSymbologyConfigs(symconfig);
+				
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				ArrayList<java.lang.Integer> arry = decodeManager.getSymConfigActivityOpeartor().getAllSymbologyId();
 				boolean b = arry.isEmpty();
 				break;
