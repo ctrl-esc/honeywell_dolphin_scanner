@@ -52,6 +52,7 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
 			}
 			try{
+				// All symbologies enabled
 				decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
 			}
 			catch (RemoteException e) {
@@ -76,14 +77,8 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case DecodeManager.MESSAGE_DECODER_COMPLETE:
-				String strDecodeResult = "";
 				DecodeResult decodeResult = (DecodeResult) msg.obj;
-
-				byte codeid = decodeResult.codeId;
-				byte aimid = decodeResult.aimId;
-				int iLength = decodeResult.length;
-				String r = decodeResult.barcodeData;
-				sendUpdate(r, false);
+				sendUpdate(decodeResult.barcodeData, false);
 				pluginCallbackContext.success("done");
 				break;
 			case DecodeManager.MESSAGE_DECODER_FAIL: 
