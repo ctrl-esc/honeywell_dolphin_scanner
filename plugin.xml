@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
-	id="org.limitstate.HoneywellDolphinScanner" 
+	id="org.limitstate.honeywell_scanner_plugin" 
 	version="0.0.5">
 
-	<name>Honeywell Dolphin 70e Barcode Scanner Plugin</name>
-	<description>Honeywell Dolphin 70e Barcode Scanner Plugin</description>
+	<name>Honeywell Barcode Scanner Plugin</name>
+	<description>Honeywell Barcode Scanner Plugin</description>
 	<license>Apache 2.0</license>
 	<keywords>cordova, honeywell, dolphin, scanner, plugin</keywords>
 
-	<js-module src="www/honeywell_dolphin_scanner.js" name="HoneywellDolphinScannerPlugin">
-		<clobbers target="navigator.honeywell_dolphin_scanner" />
+	<js-module src="www/honeywell_scanner_plugin.js" name="HoneywellScannerPlugin">
+		<clobbers target="navigator.honeywell_scanner_plugin" />
 	</js-module>
 
 	<!-- android -->
@@ -32,14 +32,15 @@
 		</config-file>
 
 		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="HoneywellDolphinScannerPlugin">
-				<param name="android-package" value="org.limitstate.HoneywellDolphinScanner" />
+			<feature name="BarcodeScannerPlugin">
+				<param name="android-package" value="org.limitstate.honeywell.BarcodeScannerPlugin" />
 			</feature>
 		</config-file>
 
+		<source-file src="src/android/libs/gson-2.2.4.jar" target-dir="libs" />
 		<source-file src="src/android/libs/honeywell.jar" target-dir="libs" />
 
-		<source-file src="src/android/HoneywellDolphinScannerPlugin.java" target-dir="src/org/limitstate/honeywell" />
+		<source-file src="src/android/BarcodeScannerPlugin.java" target-dir="src/org/limitstate/honeywell" />
 	</platform>
 
 </plugin>
