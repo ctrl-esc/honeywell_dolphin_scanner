@@ -3,9 +3,8 @@ var exec = require('cordova/exec');
 
 var HoneywellScannerPlugin = function() {
 
-  this.scan = function(success_cb, error_cb, symbologies){
-    if(typeof symbologies !== 'array') symbologies = [];
-    exec(success_cb, error_cb, "BarcodeScannerPlugin", "scan", symbologies);
+  this.scan = function(success_cb, error_cb){
+    exec(success_cb, error_cb, "BarcodeScannerPlugin", "scan", []);
   };
 
   this.startListen = function(success_cb, error_cb){
