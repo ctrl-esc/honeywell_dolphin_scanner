@@ -31,10 +31,6 @@ import com.honeywell.decodemanager.SymbologyConfigs;
 import com.honeywell.decodemanager.barcode.DecodeResult;
 import com.honeywell.decodemanager.barcode.CommonDefine;
 
-// Add symbologies here
-import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCode128;
-import com.honeywell.decodemanager.symbologyconfig.SymbologyConfigCodeQRCode;
-
 public class BarcodeScannerPlugin extends CordovaPlugin {
 
 	private static final String LOG_TAG = "BarcodeScannerPlugin";
@@ -56,7 +52,7 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
 			}
 			try{
-			decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
+				decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
 			}
 			catch (RemoteException e) {
 				e.printStackTrace();
