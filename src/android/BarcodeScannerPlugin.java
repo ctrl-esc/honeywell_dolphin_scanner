@@ -72,7 +72,12 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 	}
 	
 	private void enableSymbologies() throws RemoteException {
-		decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
+		try{
+			decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private Handler ScanResultHandler = new Handler() {
