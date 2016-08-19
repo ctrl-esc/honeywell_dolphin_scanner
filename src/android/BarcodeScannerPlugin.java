@@ -28,9 +28,6 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import org.pluginporo.aamva.Decoder;
-import org.pluginporo.aamva.DriverLicense;
-
 import com.honeywell.decodemanager.DecodeManager;
 import com.honeywell.decodemanager.SymbologyConfigs;
 import com.honeywell.decodemanager.barcode.DecodeResult;
