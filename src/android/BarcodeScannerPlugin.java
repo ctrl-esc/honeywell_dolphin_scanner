@@ -49,6 +49,7 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+		enableSymbologies();
 		if (action.equals("scan")) {
 			this.pluginCallbackContext = callbackContext;
 
@@ -69,6 +70,10 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 		}
 		return false;
 	}
+	
+	private void enableSymbologies() throws RemoteException {
+		decodeManager.enableSymbology(CommonDefine.SymbologyID.SYM_ALL);
+	}
 
 	private Handler ScanResultHandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -87,7 +92,6 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 			case DecodeManager.MESSAGE_DECODER_FAIL: 
 				break;
 			case DecodeManager.MESSAGE_DECODER_READY: 
-				decodeManager.disableSymbology(CommonDefine.SymbologyID.SYM_ALL);
 				ArrayList<java.lang.Integer> arry = decodeManager.getSymConfigActivityOpeartor().getAllSymbologyId();
 				boolean b = arry.isEmpty();
 				break;
