@@ -39,7 +39,7 @@
 
 		<source-file src="src/android/libs/honeywell.jar" target-dir="libs" />
 
-		<source-file src="src/android/BarcodeScannerPlugin.java" target-dir="src/org/limitstate/honeywell" />
+		<source-file src="src/android/src/android/HoneywellDolphinScannerPlugin.java" target-dir="src/org/limitstate/honeywell" />
 	</platform>
 
 </plugin>
