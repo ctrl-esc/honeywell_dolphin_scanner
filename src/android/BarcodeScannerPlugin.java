@@ -79,8 +79,12 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 			case DecodeManager.MESSAGE_DECODER_COMPLETE:
 				DecodeResult decodeResult = (DecodeResult) msg.obj;
 				JSONObject obj = new JSONObject();
-				obj.put("barcode", decodeResult.barcodeData);
-				obj.put("codeID", decodeResult.codeId);
+				try{
+					obj.put("barcode", decodeResult.barcodeData);
+					obj.put("codeID", decodeResult.codeId);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				sendUpdate(obj, false);
 				pluginCallbackContext.success("done");
 				break;
