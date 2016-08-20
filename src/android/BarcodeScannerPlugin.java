@@ -78,7 +78,10 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 			switch (msg.what) {
 			case DecodeManager.MESSAGE_DECODER_COMPLETE:
 				DecodeResult decodeResult = (DecodeResult) msg.obj;
-				sendUpdate(decodeResult.barcodeData, false);
+				JSONObject obj = new JSONObject();
+				obj.put("barcode", decodeResult.barcodeData);
+				obj.put("codeID", decodeResult.codeId);
+				sendUpdate(obj, false);
 				pluginCallbackContext.success("done");
 				break;
 			case DecodeManager.MESSAGE_DECODER_FAIL: 
@@ -102,7 +105,7 @@ public class BarcodeScannerPlugin extends CordovaPlugin {
 		}
 	}
 
-	private void sendUpdate(String info, boolean keepCallback) {
+	private void sendUpdate(JSONObject info, boolean keepCallback) {
 	    if (this.pluginCallbackContext != null) {
 			PluginResult result = new PluginResult(PluginResult.Status.OK, info);
 			result.setKeepCallback(keepCallback);
